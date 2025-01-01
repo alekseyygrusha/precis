@@ -1,0 +1,32 @@
+header {
+    box-shadow: 0 5px 8px -6px rgba(45, 3, 77, 1);
+    .container {
+
+    }
+    .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .logo {
+            img {
+                max-width: 150px;
+            }
+        }
+        .menu {
+            display: flex;
+            font-size: 20px;
+
+            .menu-item {
+                cursor: pointer;
+                 &:hover {
+                     text-decoration: underline;
+                 }
+            }
+
+            .menu-item:not(:last-child) {
+                margin-right: 12px;
+            }
+        }
+    }
+}
