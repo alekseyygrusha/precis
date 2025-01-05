@@ -1,9 +1,6 @@
 body {
     color: #2d034d;
-
-
-
-
+    line-height: 1.4;
     .-akayaKanadaka-font {
         font-family: AkayaKanadaka, serif;
     }
@@ -14,5 +11,98 @@ body {
 
     .-gabriela-font {
         font-family: Gabriela, serif;
+    }
+}
+
+mark {
+    background-color: #e75e6c;
+    color: wheat;
+    padding-top: 0.1px;
+    padding-bottom: 0.1px;
+    padding-right: 3px;
+    padding-left: 3px;
+    border-radius: 3px;
+}
+.demo-block {
+    padding: 25px 0;
+    &.-stand-left {
+        .stand {
+            justify-content: start;
+        }
+    }
+    .text-description {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .stand {
+        display: flex;
+        justify-content: end;
+    }
+
+    .card-number {
+        margin-top: auto;
+    }
+    .heading {
+        font-size: 32px;
+    }
+}
+
+.note-card {
+    box-shadow: 0px 3px 7px 0px grey;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    &.-small {
+        p {
+            font-size: 13px;
+        }
+        ul li {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        width: 460px;
+        height: 572px;
+
+        .heading-h1 {
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .heading-h2 {
+            font-size: 18px;
+            margin-top: 12px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .questions-block {
+        .quesion-text {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .text-hint {
+            height: 24px;
+        }
+
+        .questions-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            .question-item {
+                font-size: 18px;
+                width: 100%;
+                padding: 10px;
+                border: 1px solid black;
+                margin-bottom: 15px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        }
     }
 }
