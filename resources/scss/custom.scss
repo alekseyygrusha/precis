@@ -1,3 +1,60 @@
-body {
+.fade-in {
+    opacity: 0; /* начальное значение непрозрачности */
+    animation: fadeIn ease-in 1; /* добавляем анимацию fadeIn */
+    animation-fill-mode: forwards; /* будет видимым после завершения анимации */
+    animation-duration: 1s; /* длительность анимации в 1 секунду */
+}
 
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}
+
+@keyframes shake {
+    0% {
+        color: #d24d4d;
+        border-color: #d24d4d;
+    }
+    10%, 90% {
+        transform: translateX(-0.5px);
+    }
+    20%, 80% {
+        transform: translateX(1px);
+    }
+    30%, 50%, 70% {
+        transform: translateX(-2px);
+    }
+    40%, 60% {
+        transform: translateX(2px);
+    }
+
+    99% {
+        color: #d24d4d;
+        border-color: #d24d4d;
+    }
+    100% {
+        border-color: initial;
+    }
+}
+.shake {
+    animation: shake 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) both;
+}
+
+.shake-enter-active,
+.shake-leave-active {
+    transition: shake 1.5s ease;
 }

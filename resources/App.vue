@@ -115,7 +115,7 @@
                                         <div class="note-item px-4">
                                             <QuestionItem></QuestionItem>
                                         </div>
-                                        <div class="px-4 card-number text-end">1</div>
+
                                     </div>
                                 </div>
                             </div>
