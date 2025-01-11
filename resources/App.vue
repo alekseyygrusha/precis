@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-7">
                                 <div class="stand">
-                                    <div class="note-card -small">
+                                    <div class="note-card -shadow -small">
                                         <div class="note-item">
                                             <div class="heading-h1 px-4">Lorem ipsum dolor sit amet consectetur adipisicing. Non, sunt!</div>
                                         </div>
@@ -49,7 +49,7 @@
                                         <div class="note-item px-4 font-style-italic fst-italic text-decoration-underline">
                                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                                         </div>
-                                        <div class="px-4 card-number text-end">1</div>
+                                        <div class="px-4 card-number pb-4 text-end">1</div>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                         <div class="row">
                             <div class="col-7">
                                 <div class="stand">
-                                    <div class="note-card -small">
+                                    <div class="note-card -shadow -small">
                                         <div class="note-item heading-h1 px-4">
                                             <div>Setup Stores</div>
                                         </div>
@@ -86,7 +86,7 @@
                                             <p>Setup stores bring a lot more flexibility than <mark>Option Stores</mark> as you can create watchers within a store and freely use any <mark>composable</mark>. However, keep in mind that using composables will get more complex when using SSR.</p>
                                         </div>
 
-                                        <div class="px-4 card-number text-end">1</div>
+                                        <div class="px-4 pb-4 card-number text-end">1</div>
                                     </div>
                                 </div>
                             </div>
@@ -108,15 +108,7 @@
                             </div>
                             <div class="col-5">
                                 <div class="stand">
-                                    <div class="note-card -gabriela-font -small">
-                                        <div class="note-item heading-h1 px-4">
-                                            <div>Закрепим?</div>
-                                        </div>
-                                        <div class="note-item px-4">
-                                            <QuestionItem></QuestionItem>
-                                        </div>
-
-                                    </div>
+                                    <QuestionItem></QuestionItem>
                                 </div>
                             </div>
                         </div>

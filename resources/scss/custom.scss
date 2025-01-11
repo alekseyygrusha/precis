@@ -14,12 +14,19 @@
     }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.5s ease;
+.fade-enter-active {
+    transition-delay: 0.9s;
+    transition: opacity 0.9s ease;
 }
 
-.fade-enter-from,
+.fade-leave-active {
+    transition: opacity 0.9s ease;
+}
+
+.fade-enter-from {
+    opacity: 0;
+}
+
 .fade-leave-to {
     opacity: 0;
 }
@@ -57,4 +64,12 @@
 .shake-enter-active,
 .shake-leave-active {
     transition: shake 1.5s ease;
+}
+
+.flipped
+{
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
 }

@@ -1,0 +1,54 @@
+.flip-container
+{
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    transition: all .3s ease;
+}
+
+
+.flip-card
+{
+    width: 100%;
+    -webkit-transition: -webkit-transform 0.6s;
+    -moz-transition: -moz-transform 0.6s;
+    -o-transition: -o-transform 0.6s;
+    transition: transform 0.6s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped
+{
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+.flip-card .front-side,
+.flip-card .back-side {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+
+.flip-card .back-side {
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+    -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+
+
+
