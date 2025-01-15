@@ -1,10 +1,8 @@
 <template>
     <div class="note-card -shadow -small">
-        <div class="note-item">
-            <div class="heading-h1 px-4">Lorem ipsum dolor sit amet consectetur adipisicing.
-                Non, sunt!
-            </div>
-        </div>
+        <template v-for="noteItem in noteData.items">
+            <NoteItem :itemData="noteItem"></NoteItem>
+        </template>
         <div class="note-item">
             <p class="px-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
                 voluptates necessitatibus possimus. Lorem lorem
@@ -36,7 +34,23 @@
 </template>
 
 <script>
+ import NoteItem from "@/view/note/noteItems/NoteItem.vue";
+
  export default {
-     name: 'NoteCard'
+     name: 'NoteCard',
+     components: {NoteItem},
+     props: {
+         noteData: {
+             type: Object,
+             required: true
+         }
+     },
+     created() {
+         console.log(this.noteData);
+     },
+     methods: {
+
+     },
+
  }
 </script>

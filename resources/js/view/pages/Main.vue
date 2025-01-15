@@ -149,7 +149,7 @@ import {bespin} from 'thememirror';
 import {useRootStore} from '@/store/root';
 import {mapStores} from "pinia";
 import {codeToHtml} from 'shiki'
-import QuestionItem from "/resources/note/noteItems/QuestionItem.vue";
+import QuestionItem from "@/view/note/noteItems/QuestionItem.vue";
 import HeaderComponent from "@/view/layout/Header.vue";
 
 // доступ к переменной `store` в любом месте компонента ✨
