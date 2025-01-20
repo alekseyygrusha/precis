@@ -56,24 +56,20 @@
                                 id: 1,
                                 type: 'heading',
                                 content: 'Lorem ipsum dolor sit amet consectetur adipisicing. Non, sunt!',
-                                classes: [''],
+                                classes: ['heading-h1'],
                                 defaultClasses: ['px-4'] //будем только при создании их добавлять
                             },
                             1: {
-                                id: 1,
+                                id: 2,
                                 type: 'text',
-                                classes: ['']
+                                content: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
+                    voluptates necessitatibus possimus. Lorem lorem
+                    <mark>ipsum dolor</mark>
+                    sit amet.`,
+                                classes: ['123'],
+                                defaultClasses: ['px-4']
                             },
-                            2: {
-                                id: 1,
-                                type: 'text',
-                                classes: ['']
-                            },
-                            3: {
-                                id: 1,
-                                type: 'text',
-                                classes: ['']
-                            }
+
                         },
                         questions: {}
                     },

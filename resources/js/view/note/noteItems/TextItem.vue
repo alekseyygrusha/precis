@@ -1,14 +1,14 @@
 <template>
     <div class="note-item">
-        <div :class="classes">
-            {{itemData.content}}
+        <div :class="classes" v-html="itemData.content">
+
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'HeadingItem',
+    name: 'TextItem',
     data() {
         return {
 

@@ -12,9 +12,9 @@ use App\Http\Controllers\Controller;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::get('/parsing', [Controller::class, 'filtersParsingController']);
+/*Route::get('/parsing', [Controller::class, 'filtersParsingController']);
 Route::get('/parsingLinks', [Controller::class, 'parsingLinks']);
-Route::get('/parsingPages', [Controller::class, 'parseDownloadPages']);
+Route::get('/parsingPages', [Controller::class, 'parseDownloadPages']);*/
 
-/*Route::get('/{url}', fn() => view('index'))
-    ->where('url', '.*');*/
+Route::get('/{url}', fn() => view('index'))
+    ->where('url', '.*');

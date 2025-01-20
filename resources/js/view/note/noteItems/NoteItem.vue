@@ -1,11 +1,12 @@
 <template>
     <div class="note-item">
-        <component :is="componentName"></component>
+        <component :is="componentName" :itemData="itemData" :classes="setClasses"></component>
     </div>
 </template>
 
 <script>
 import HeadingItem from "@/view/note/noteItems/HeadingItem.vue";
+import TextItem from "@/view/note/noteItems/TextItem.vue";
 export default {
     name: 'NoteItem',
     data() {
@@ -14,7 +15,7 @@ export default {
         };
     },
     components: {
-        HeadingItem
+        HeadingItem,TextItem
     },
     props: {
         itemData: {
@@ -29,9 +30,15 @@ export default {
         componentName() {
             return `${this.itemData.type.charAt(0).toUpperCase() + this.itemData.type.slice(1)}Item`
         },
+        setClasses() {
+            return this.itemData?.defaultClasses.join(" ") + ' ' + this.itemData?.classes.join(" ");
+        }
 
     },
     watch: {
+
+    },
+    created() {
 
     },
     mounted() {
