@@ -40,12 +40,7 @@ mark {
         justify-content: end;
     }
 
-    .card-number {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        margin-top: auto;
-    }
+
     .heading {
         font-size: 32px;
     }
@@ -59,6 +54,12 @@ mark {
     display: flex;
     flex-direction: column;
     position: relative;
+    .card-number {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        margin-top: auto;
+    }
     &.-small {
         p {
             font-size: 14px;

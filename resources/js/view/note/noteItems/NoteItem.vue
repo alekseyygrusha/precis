@@ -1,12 +1,14 @@
 <template>
     <div class="note-item">
-        <component :is="componentName" :itemData="itemData" :classes="setClasses"></component>
+        <component :is="componentName" :noteId="noteId" :itemData="itemData" :classes="setClasses"></component>
     </div>
 </template>
 
 <script>
 import HeadingItem from "@/view/note/noteItems/HeadingItem.vue";
 import TextItem from "@/view/note/noteItems/TextItem.vue";
+import ListItem from "@/view/note/noteItems/ListItem.vue";
+import CodeExampleItem from "@/view/note/noteItems/CodeExampleItem.vue";
 export default {
     name: 'NoteItem',
     data() {
@@ -15,16 +17,18 @@ export default {
         };
     },
     components: {
-        HeadingItem,TextItem
+        HeadingItem,TextItem, ListItem, CodeExampleItem
     },
     props: {
+
+        noteId: {
+            required: true,
+            type: Number
+        },
         itemData: {
             required: true,
             type: Object
         }
-    },
-    methods: {
-
     },
     computed: {
         componentName() {

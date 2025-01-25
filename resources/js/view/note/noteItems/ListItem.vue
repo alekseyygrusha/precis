@@ -1,12 +1,15 @@
 <template>
-    <div class="note-item">
-        <p :class="classes" v-html="itemData.content"></p>
+    <div class="note-item" :class="classes">
+        <p>{{itemData.content.heading}}</p>
+        <ul>
+            <li v-for="item in itemData.content.list" v-html="item"></li>
+        </ul>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'TextItem',
+    name: 'ListItem',
     data() {
         return {
 

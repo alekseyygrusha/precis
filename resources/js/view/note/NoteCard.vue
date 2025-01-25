@@ -1,9 +1,9 @@
 <template>
-    <div class="note-card -shadow -small">
+    <div class="note-card -shadow -small mb-4">
         <template v-for="noteItem in noteData.items">
-            <NoteItem :itemData="noteItem"></NoteItem>
+            <NoteItem :itemData="noteItem" :noteId="noteData.id"></NoteItem>
         </template>
-
+        <div class="-sriracha-font px-4 card-number pb-4 text-end">{{noteNumber}}</div>
     </div>
 </template>
 
@@ -14,6 +14,10 @@
      name: 'NoteCard',
      components: {NoteItem},
      props: {
+         noteNumber: {
+             required: true,
+             type: Number
+         },
          noteData: {
              type: Object,
              required: true
@@ -25,6 +29,11 @@
      methods: {
 
      },
+     computed: {
+         calcCadsCount() {
+             return Object.keys(this.noteData).length
+         }
+     }
 
  }
 </script>
