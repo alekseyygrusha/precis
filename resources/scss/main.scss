@@ -163,3 +163,57 @@ mark {
         }
     }
 }
+
+.card-editor-menu {
+    border: 1px solid #300b52;
+    border-radius: 8px;
+    padding: 20px 10px 6px;
+    margin-bottom: 15px;
+    width: 460px;
+    max-height: 78px;
+
+    .menu-wrap {
+        display: flex;
+        .menu-item {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+            min-width: 60px;
+
+            &.-visible {
+                margin-right: 12px;
+                .annotation {
+                    opacity: 1;
+                }
+            }
+            .icon {
+                width: 32px;
+                height: 32px;
+
+                svg {
+                    width: 32px;
+                    height: 32px;
+
+                    use{
+                        fill: #300b52;
+                    }
+                }
+            }
+
+            .annotation {
+                font-size: 12px;
+                opacity: 0;
+            }
+
+            &:hover {
+                .annotation {
+                    transition: .8s;
+                    opacity: 1;
+                }
+            }
+        }
+
+    }
+}

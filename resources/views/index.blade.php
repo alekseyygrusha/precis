@@ -9,10 +9,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet"/>
     <title>Precis</title>
+
+    {!! file_get_contents(public_path('svg/sprite.svg')) !!}
+    @vite(['resources/js/app.js'])
 </head>
+<body>
 
 <div id="app"></div>
-    @vite(['resources/js/app.js'])
     @vite(['resources/scss/app.scss'])
+
 </body>
 </html>
