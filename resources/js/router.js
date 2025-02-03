@@ -12,6 +12,10 @@ const router = createRouter({
                     component: () => import("@/view/pages/Cards.vue"),
                 },
                 {
+                    path: '/editor',
+                    component: () => import("@/view/pages/Editor.vue"),
+                },
+                {
                     path: '/',
                     component: () => import("@/view/pages/Main.vue"),
                 },

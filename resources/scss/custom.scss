@@ -1,34 +1,13 @@
-.fade-in {
-    opacity: 0; /* начальное значение непрозрачности */
-    animation: fadeIn ease-in 1; /* добавляем анимацию fadeIn */
-    animation-fill-mode: forwards; /* будет видимым после завершения анимации */
-    animation-duration: 1s; /* длительность анимации в 1 секунду */
-}
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.fade-enter-active {
-    transition-delay: 0.9s;
-    transition: opacity 0.9s ease;
-}
-
+/* Анимация появления и исчезновения */
+.fade-enter-active,
 .fade-leave-active {
-    transition: opacity 0.9s ease;
+    transition: opacity .5s ease, transform .5s ease; /* Плавный переход */
 }
 
-.fade-enter-from {
-    opacity: 0;
-}
-
+.fade-enter-from,
 .fade-leave-to {
-    opacity: 0;
+    opacity: 0; /* Начальное состояние - невидимый */
+    transform: translateY(-15px); /* Дополнительный эффект - смещение */
 }
 
 @keyframes shake {
