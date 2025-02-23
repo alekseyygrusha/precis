@@ -151,8 +151,6 @@ export const useCardsStore = defineStore('cards', {
                 },
                 questions: {}
             },
-
-
         },
     }),
     actions: {

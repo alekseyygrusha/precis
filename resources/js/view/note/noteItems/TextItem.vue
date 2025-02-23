@@ -1,5 +1,13 @@
 <template>
-    <div class="note-item">
+    <div class="note-item" v-if="isEdit">
+        <p :class="classes"  v-html="itemData.content"></p>
+        <div :class="classes" :hidden="true">
+            <div  contenteditable="true" style="border: none; outline: none;">
+                Начните писать здесь...
+            </div>
+        </div>
+    </div>
+    <div class="note-item" v-else>
         <p :class="classes" v-html="itemData.content"></p>
     </div>
 </template>
@@ -13,6 +21,10 @@ export default {
         };
     },
     props: {
+        isEdit: {
+            required: false,
+            type: Boolean
+        },
         itemData: {
             required: true,
             type: Object

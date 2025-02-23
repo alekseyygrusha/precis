@@ -55,7 +55,7 @@
         <div class="note-card -shadow -small mb-4">
             <transition-group name="fade">
                 <template v-for="noteItem in noteData.items" :key="noteItem.id">
-                        <NoteItem :itemData="noteItem" :noteId="noteItem.id" ></NoteItem>
+                        <NoteItemEditor :itemData="noteItem" :noteId="noteItem.id" ></NoteItemEditor>
                 </template>
             </transition-group>
 
@@ -72,13 +72,14 @@ import SvgIcon from "@/customElements/SvgIcon.vue";
 import ids from 'virtual:svg-icons-names'
 import {useCardsStore} from "@/store/cards.js";
 import {mapStores} from "pinia";
+import NoteItemEditor from "@/view/note/noteItemsEditor/NoteItemEditor.vue";
 
 const cardsStore = useCardsStore();
 
 const blockItems = cardsStore.blocks;
 export default {
     name: 'CardEditor',
-    components: {SvgIcon, NoteItem},
+    components: {NoteItemEditor, SvgIcon, NoteItem},
     props: {
         id: {
             type: Number,
