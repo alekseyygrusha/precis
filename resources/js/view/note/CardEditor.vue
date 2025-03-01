@@ -1,8 +1,9 @@
 <template>
     <div>
+
         <div class="card-editor-menu">
-            <transition name="fade" mode="out-in">
-                <div class="menu-wrap" v-if="!isShowBlocksMenu">
+            <transition-group name="fade" mode="out-in">
+                <div class="menu-wrap" v-if="editorStore.activeMenu === 'cardMenu'">
                     <div class="menu-item"  @click="showBlocksMenu">
                         <div class="icon">
                             <SvgIcon name="add"></SvgIcon>
@@ -17,7 +18,7 @@
                     </div>
                 </div>
 
-                <div class="menu-wrap" v-else>
+                <div class="menu-wrap" v-if="editorStore.activeMenu === 'blocksMenu'">
                     <div class="menu-item -visible" @click="goPrevMenu">
                         <div class="icon">
                             <SvgIcon name="back"></SvgIcon>
@@ -49,7 +50,7 @@
                         <div class="annotation">Код</div>
                     </div>
                 </div>
-            </transition>
+            </transition-group>
 
         </div>
         <div class="note-card -shadow -small mb-4">
@@ -69,12 +70,14 @@
 <script>
 import NoteItem from "@/view/note/noteItems/NoteItem.vue";
 import SvgIcon from "@/customElements/SvgIcon.vue";
-import ids from 'virtual:svg-icons-names'
 import {useCardsStore} from "@/store/cards.js";
 import {mapStores} from "pinia";
 import NoteItemEditor from "@/view/note/noteItemsEditor/NoteItemEditor.vue";
+import {useEditorStore} from "@/store/editor.js";
+import editor from "@/view/pages/Editor.vue";
 
 const cardsStore = useCardsStore();
+const editorStore = useEditorStore();
 
 const blockItems = cardsStore.blocks;
 export default {
@@ -96,6 +99,7 @@ export default {
         };
     },
     created() {
+        console.log(editorStore.activeMenu)
 
     },
     methods: {
@@ -105,17 +109,17 @@ export default {
             console.log('newBlock', newBlock);
         },
         goPrevMenu() {
-            this.isShowBlocksMenu = false;
+            editorStore.activeMenu = 'cardMenu';
         },
         showBlocksMenu() {
-            this.isShowBlocksMenu = true;
+            editorStore.activeMenu = 'blocksMenu';
         },
         deleteCard() {
 
         }
     },
     computed: {
-        ...mapStores(cardsStore)
+        ...mapStores(useCardsStore, useEditorStore)
 
         /*calcCadsCount() {
             return Object.keys(this.noteData).length

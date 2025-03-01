@@ -1,5 +1,5 @@
 <template>
-    <div class="note-item" v-if="isEdit">
+    <div class="note-item -edit-ready" v-if="isEdit">
         <p :class="classes"  v-html="itemData.content"></p>
         <div :class="classes" :hidden="true">
             <div  contenteditable="true" style="border: none; outline: none;">
