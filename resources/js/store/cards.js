@@ -3,6 +3,7 @@ import { defineStore } from 'pinia';
 
 export const useCardsStore = defineStore('cards', {
     state: () => ({
+        idGlobalCounter: 1, //Это временный генератор id
         cardTemplate: {
             name: '',
             items: {},
@@ -159,11 +160,15 @@ export const useCardsStore = defineStore('cards', {
         },
         addBlockToCard(cardId, blockData) {
             //Исполнение на фронте. Надо будет думать про логику на бэке
-            console.log('cardId', cardId);
-            console.log('123', this.cardsList);
-            let testId = Object.keys(this.cardsList[cardId].items).length ?? 1; //временный айдишник
-            blockData.id = cardId;
-            this.cardsList[cardId].items[testId] = blockData;
+            let testId = this.idGlobalCounter; //временный айдишник
+
+            blockData.id = testId;
+            this.cardsList[cardId].items[testId] = Object.assign({}, blockData);
+            this.idGlobalCounter = this.idGlobalCounter + 1;
+            console.log('Обновлённый айди', this.idGlobalCounter);
+        },
+        incrementGlobalCounter() {
+
         }
     },
 });

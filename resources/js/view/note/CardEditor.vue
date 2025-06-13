@@ -1,8 +1,6 @@
 <template>
-    <div>
-
         <div class="card-editor-menu">
-            <transition-group name="fade" mode="out-in">
+            <transition-group name="fade">
                 <div class="menu-wrap" v-if="editorStore.activeMenu === 'cardMenu'">
                     <div class="menu-item"  @click="showBlocksMenu">
                         <div class="icon">
@@ -50,20 +48,44 @@
                         <div class="annotation">Код</div>
                     </div>
                 </div>
-            </transition-group>
 
+                <div class="menu-wrap" v-if="editorStore.activeMenu === 'blockEditMenu'">
+                    <div class="menu-item -visible" @click="showBlocksMenu">
+                        <div class="icon">
+                            <SvgIcon name="back"></SvgIcon>
+                        </div>
+                        <div class="annotation">Вернуться</div>
+                    </div>
+                    <div class="menu-item"  @click="deleteCard">
+                        <div class="icon">
+                            <SvgIcon name="delete"></SvgIcon>
+                        </div>
+                        <div class="annotation">Удалить</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="icon">
+                            <SvgIcon name="delete"></SvgIcon>
+                        </div>
+                        <div class="annotation">Выше</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="icon">
+                            <SvgIcon name="delete"></SvgIcon>
+                        </div>
+                        <div class="annotation">Ниже</div>
+                    </div>
+                </div>
+            </transition-group>
         </div>
-        <div class="note-card -shadow -small mb-4">
+        <div class="note-card card-editor -shadow -small mb-4">
             <transition-group name="fade">
                 <template v-for="noteItem in noteData.items" :key="noteItem.id">
                         <NoteItemEditor :itemData="noteItem" :noteId="noteItem.id" ></NoteItemEditor>
                 </template>
             </transition-group>
-
-
             <div class="-sriracha-font px-4 card-number pb-4 text-end"></div>
         </div>
-    </div>
+
 
 </template>
 
@@ -74,7 +96,6 @@ import {useCardsStore} from "@/store/cards.js";
 import {mapStores} from "pinia";
 import NoteItemEditor from "@/view/note/noteItemsEditor/NoteItemEditor.vue";
 import {useEditorStore} from "@/store/editor.js";
-import editor from "@/view/pages/Editor.vue";
 
 const cardsStore = useCardsStore();
 const editorStore = useEditorStore();
@@ -83,6 +104,7 @@ const blockItems = cardsStore.blocks;
 export default {
     name: 'CardEditor',
     components: {NoteItemEditor, SvgIcon, NoteItem},
+
     props: {
         id: {
             type: Number,
@@ -109,10 +131,10 @@ export default {
             console.log('newBlock', newBlock);
         },
         goPrevMenu() {
-            editorStore.activeMenu = 'cardMenu';
+            editorStore.showCardMenu();
         },
         showBlocksMenu() {
-            editorStore.activeMenu = 'blocksMenu';
+            editorStore.showBlocksMenu();
         },
         deleteCard() {
 
@@ -120,10 +142,6 @@ export default {
     },
     computed: {
         ...mapStores(useCardsStore, useEditorStore)
-
-        /*calcCadsCount() {
-            return Object.keys(this.noteData).length
-        }*/
     }
 
 }

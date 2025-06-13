@@ -1,5 +1,16 @@
-.note-card {
-    .note-item.-edit-ready {
-        cursor: pointer;
+.card-editor.note-card {
+    .note-item {
+        .-edit-ready {
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 2px 7px 0 grey;
+                transition: 0.3s;
+            }
+        }
+
+        &.-focus-out {
+            transition: 1s;
+            opacity: 0.5;
+        }
     }
 }

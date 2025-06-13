@@ -6,5 +6,23 @@ export const useEditorStore = defineStore('editor', {
         blocksMenu: false,
         editBlockMenu: false,
         activeMenu: 'cardMenu',
-    })
+        editBlockId: null,
+
+
+    }),
+    actions: {
+        showBlocksMenu() {
+            console.log('showBlocksMen');
+            this.activeMenu = 'blocksMenu';
+            this.editBlockId = null;
+        },
+        showCardMenu() {
+            this.activeMenu = 'cardMenu';
+        },
+        showBlockEditMenu() {
+            this.activeMenu = 'blockEditMenu';
+
+        }
+
+    },
 });
