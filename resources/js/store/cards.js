@@ -1,15 +1,10 @@
-import { defineStore } from 'pinia';
+import {defineStore} from 'pinia';
 
 
 export const useCardsStore = defineStore('cards', {
     state: () => ({
         idGlobalCounter: 1, //Это временный генератор id
-        cardTemplate: {
-            name: '',
-            items: {},
-            questions: {}
-        },
-        cardsList: [],
+        cardsList: {},
         blocks: {
             heading: {
                 type: 'heading',
@@ -155,17 +150,32 @@ export const useCardsStore = defineStore('cards', {
         },
     }),
     actions: {
+        getUniqueIdAndGenerateIt() {
+            this.idGlobalCounter = this.idGlobalCounter + 1;
+            return this.idGlobalCounter;
+        },
         makeNewCard() {
-            this.cardsList.push(this.cardTemplate)
+            let id = this.getUniqueIdAndGenerateIt();
+            this.cardsList[id] = {
+                name: '',
+                items: {},
+                questions: {}
+            };
         },
         addBlockToCard(cardId, blockData) {
+            console.log('cardId', cardId);
             //Исполнение на фронте. Надо будет думать про логику на бэке
             let testId = this.idGlobalCounter; //временный айдишник
 
             blockData.id = testId;
             this.cardsList[cardId].items[testId] = Object.assign({}, blockData);
+            /*this.cardsList[cardId].id = cardId; //Пока тут присвоим*/
             this.idGlobalCounter = this.idGlobalCounter + 1;
-            console.log('Обновлённый айди', this.idGlobalCounter);
+
+        },
+        setItemContent(cardId, itemId, content) {
+            console.log('cardId', cardId);
+            this.cardsList[cardId].items[itemId].content = content;
         },
         incrementGlobalCounter() {
 

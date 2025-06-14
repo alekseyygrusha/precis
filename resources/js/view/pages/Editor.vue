@@ -8,7 +8,7 @@
             </div>
             <div class="cards-book">
                 <template v-for="(noteData, index) in this.cardsStore.cardsList">
-                    <card-editor :noteData="noteData" :id="index"></card-editor>
+                    <card-editor :noteData="noteData" :id="parseInt(index)"></card-editor>
                 </template>
             </div>
         </div>

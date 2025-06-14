@@ -1,5 +1,5 @@
 <template>
-    <div :class="editStateClass(editIsStart)" v-if="isEdit" :ref="'note_card_' + itemData.id">
+    <div :class="$editStateClass(editIsStart)" v-if="isEdit" :ref="'note_card_' + itemData.id">
         <div :class="classes" v-if="editIsStart">
             <p ref='itemContent' contenteditable="true" style="border: none; outline: none;" >
                 {{itemData.content ?? 'Начните писать здесь...'}}
@@ -7,7 +7,6 @@
         </div>
         <p :class="classes" v-else v-html="itemData.content"  @click="editStart" @focusout="editEnd()"></p>
     </div>
-
     <div class="note-item" v-else>
         <p :class="classes" v-html="itemData.content"></p>
     </div>
@@ -20,14 +19,9 @@ import {useCardsStore} from "@/store/cards.js";
 import {onClickOutside} from '@vueuse/core'
 
 const editorStore = useEditorStore();
+const cardsStore = useCardsStore();
 export default {
     name: 'TextItem',
-    data() {
-        return {
-
-        };
-    },
-
     props: {
         isEdit: {
             required: false,
@@ -37,28 +31,34 @@ export default {
             required: true,
             type: Object
         },
+        cardId: {
+            required: true,
+            type: Number
+        },
         classes: {
             required: false,
             type: String
-        }
+        },
+        noteId: {
+            required: true,
+            type: Number
+        },
     },
     methods: {
         editStart() {
             console.log('itemData', this.itemData)
-
             editorStore.editBlockId = this.itemData.id;
             editorStore.showBlockEditMenu();
-
             this.unsetEditorIdCardHandler();
         },
         editEnd() {
-            console.log('editEnd()');
-            editorStore.editBlockId = null;
             this.saveData();
+            editorStore.showBlocksMenu();
         },
         saveData() {
-            //Вынести в метод
-            this.itemData.content = this.$refs.itemContent.innerText;
+            console.log(this.$refs.itemContent);
+            console.log(this.itemData);
+            cardsStore.setItemContent(this.cardId, this.itemData.id, this.$refs.itemContent.innerText);
         },
         unsetEditorIdCardHandler() {
             let name = 'note_card_' + this.itemData.id;
@@ -69,29 +69,15 @@ export default {
                     this.editEnd();
                 }
             })
-
-
         },
-        editStateClass(editIsStart) {
-            return editIsStart ? '' : '-edit-ready';
-        }
+
     },
     computed: {
         ...mapStores(useCardsStore, useEditorStore),
         editIsStart() {
-            return this.itemData.id === editorStore.editBlockId;
-        },
-
-    },
-    watch: {
-
-    },
-    mounted() {
-
-    },
+            return editorStore.isEditingBlock(this.itemData.id)
+        }
+    }
 };
 </script>
 
-<style>
-
-</style>

@@ -80,7 +80,7 @@
         <div class="note-card card-editor -shadow -small mb-4">
             <transition-group name="fade">
                 <template v-for="noteItem in noteData.items" :key="noteItem.id">
-                        <NoteItemEditor :itemData="noteItem" :noteId="noteItem.id" ></NoteItemEditor>
+                        <NoteItemEditor :itemData="noteItem" :cardId="id"  :noteId="noteItem.id" ></NoteItemEditor>
                 </template>
             </transition-group>
             <div class="-sriracha-font px-4 card-number pb-4 text-end"></div>
@@ -108,7 +108,6 @@ export default {
     props: {
         id: {
             type: Number,
-
         },
         noteData: {
             type: Object,
@@ -126,7 +125,8 @@ export default {
     },
     methods: {
         addCardBlock(blockType) {
-            let newBlock = blockItems[blockType];
+            let newBlock = Object.assign({}, blockItems[blockType]);
+            let testId = cardsStore.idGlobalCounter;
             cardsStore.addBlockToCard(this.id, newBlock)
             console.log('newBlock', newBlock);
         },

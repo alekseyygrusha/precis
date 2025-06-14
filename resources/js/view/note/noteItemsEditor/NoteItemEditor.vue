@@ -1,6 +1,6 @@
 <template>
     <div class="note-item" :class="editorStore.editBlockId && editorStore.editBlockId !== itemData.id ? '-focus-out' : ''">
-        <component :is="componentName" :isEdit="true" :noteId="noteId" :itemData="itemData" :classes="setClasses"></component>
+        <component :is="componentName" :isEdit="true" :cardId="cardId" :noteId="noteId" :itemData="itemData" :classes="setClasses"></component>
     </div>
 </template>
 
@@ -26,6 +26,10 @@ export default {
     },
     props: {
         noteId: {
+            required: true,
+            type: Number
+        },
+        cardId: {
             required: true,
             type: Number
         },

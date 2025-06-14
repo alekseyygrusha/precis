@@ -6,10 +6,13 @@ export const useEditorStore = defineStore('editor', {
         blocksMenu: false,
         editBlockMenu: false,
         activeMenu: 'cardMenu',
-        editBlockId: null,
-
-
+        editBlockId: null
     }),
+    getters: {
+        isEditingBlock: (state) => (itemId) => {
+            return itemId === state.editBlockId
+        }
+    },
     actions: {
         showBlocksMenu() {
             console.log('showBlocksMen');
@@ -21,8 +24,7 @@ export const useEditorStore = defineStore('editor', {
         },
         showBlockEditMenu() {
             this.activeMenu = 'blockEditMenu';
-
-        }
+        },
 
     },
 });

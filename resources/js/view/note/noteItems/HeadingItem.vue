@@ -1,5 +1,6 @@
 <template>
     <div class="note-item">
+
         <div :class="classes">
             {{itemData.content}}
         </div>
