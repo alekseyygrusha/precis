@@ -25,6 +25,8 @@ export const useEditorStore = defineStore('editor', {
         showBlockEditMenu() {
             this.activeMenu = 'blockEditMenu';
         },
-
+        startEditBlock(blockId) {
+            this.editBlockId = blockId;
+        },
     },
 });

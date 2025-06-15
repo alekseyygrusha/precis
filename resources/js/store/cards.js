@@ -177,8 +177,5 @@ export const useCardsStore = defineStore('cards', {
             console.log('cardId', cardId);
             this.cardsList[cardId].items[itemId].content = content;
         },
-        incrementGlobalCounter() {
-
-        }
     },
 });

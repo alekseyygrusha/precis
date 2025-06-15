@@ -46,19 +46,14 @@ export default {
     },
     methods: {
         editStart() {
-            console.log('itemData', this.itemData)
-            editorStore.editBlockId = this.itemData.id;
-            editorStore.showBlockEditMenu();
             this.unsetEditorIdCardHandler();
+            this.$emit('editStart', this.itemData.id);
         },
         editEnd() {
-            this.saveData();
-            editorStore.showBlocksMenu();
-        },
-        saveData() {
-            console.log(this.$refs.itemContent);
-            console.log(this.itemData);
-            cardsStore.setItemContent(this.cardId, this.itemData.id, this.$refs.itemContent.innerText);
+            this.$emit('editEnd', {
+                saveContent: this.$refs.itemContent.innerText,
+                itemId: this.itemData.id
+            });
         },
         unsetEditorIdCardHandler() {
             let name = 'note_card_' + this.itemData.id;
@@ -69,8 +64,7 @@ export default {
                     this.editEnd();
                 }
             })
-        },
-
+        }
     },
     computed: {
         ...mapStores(useCardsStore, useEditorStore),
